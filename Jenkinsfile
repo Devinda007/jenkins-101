@@ -4,6 +4,9 @@ pipeline {
             label 'docker-agent-python'
             }
       }
+    triggers {
+        pollSCM '* * * * *'
+    }
     stages {
         stage('Build') {
             steps {
@@ -20,7 +23,7 @@ pipeline {
                 sh '''
                 cd myapp
                 python3 hello.py
-                python3 hello.py --name=Devinda
+                python3 hello.py --name=Dev
                 '''
             }
         }
